@@ -34,9 +34,9 @@ const CreatePlan = () => {
     console.log(planName, monthlyPlanAmount, yearlyPlanAmount, waterStations, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, lockerRooms, cafeOrLounge);
 
     try {
-    
+
       const res = await axios.post(`${BASE_URL}/api/v1/plan/create-plan`, {
-        planName, monthlyPlanAmount, yearlyPlanAmount, waterStations ,lockerRooms, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, cafeOrLounge
+        planName, monthlyPlanAmount, yearlyPlanAmount, waterStations, lockerRooms, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, cafeOrLounge
       });
       console.log(res);
       if (res.data && res.data.success) {
@@ -56,7 +56,7 @@ const CreatePlan = () => {
     <section className='py-60 bg-gray-900'>
       <div className='container mx-auto px-6'>
         <form className='flex w-full h-screen justify-center items-center flex-col gap-5' onSubmit={onSubmit}>
-          <h2 className='text-center text-4xl text-white font-bold'>Create Plan</h2>
+          <h2 className='text-center text-4xl text-white font-bold mt-16'>Create Plan</h2>
 
           <Input
             type="text"
@@ -67,47 +67,47 @@ const CreatePlan = () => {
             pattern="[A-Za-z ]+"
           />
 
-   
-
-<Input
-  type="text"
-  placeholder="Monthly Amount"
-  name="monthlyAmount"
-  value={monthlyPlanAmount}
-  onChange={(e) => {
-    const inputText = e.target.value;
-    const containsNonNumeric = /\D/.test(inputText); // Check if input contains non-numeric characters
-    if (!containsNonNumeric || inputText === "") {
-      // If input contains only numeric characters or is empty, update monthlyAmount state
-      setMonthlyPlanAmount(inputText);
-    } else {
-      // If input contains non-numeric characters, display an error toast message
-      toast.error("Only numeric value is allowed for monthly amount");
-      // You can also perform any other action here, such as resetting the input field
-    }
-  }}
-/>
 
 
+          <Input
+            type="text"
+            placeholder="Monthly Amount"
+            name="monthlyAmount"
+            value={monthlyPlanAmount}
+            onChange={(e) => {
+              const inputText = e.target.value;
+              const containsNonNumeric = /\D/.test(inputText); // Check if input contains non-numeric characters
+              if (!containsNonNumeric || inputText === "") {
+                // If input contains only numeric characters or is empty, update monthlyAmount state
+                setMonthlyPlanAmount(inputText);
+              } else {
+                // If input contains non-numeric characters, display an error toast message
+                toast.error("Only numeric value is allowed for monthly amount");
+                // You can also perform any other action here, such as resetting the input field
+              }
+            }}
+          />
 
-<Input
-  type="text"
-  placeholder="Yearly Amount"
-  name="yearlyAmount"
-  value={yearlyPlanAmount}
-  onChange={(e) => {
-    const inputText = e.target.value;
-    const containsNonNumeric = /\D/.test(inputText); // Check if input contains non-numeric characters
-    if (!containsNonNumeric || inputText === "") {
-      // If input contains only numeric characters or is empty, update yearlyAmount state
-      setYearlyPlanAmount(inputText);
-    } else {
-      // If input contains non-numeric characters, display an error toast message
-      toast.error("Only numeric value is allowed for yearly amount");
-      // You can also perform any other action here, such as resetting the input field
-    }
-  }}
-/>
+
+
+          <Input
+            type="text"
+            placeholder="Yearly Amount"
+            name="yearlyAmount"
+            value={yearlyPlanAmount}
+            onChange={(e) => {
+              const inputText = e.target.value;
+              const containsNonNumeric = /\D/.test(inputText); // Check if input contains non-numeric characters
+              if (!containsNonNumeric || inputText === "") {
+                // If input contains only numeric characters or is empty, update yearlyAmount state
+                setYearlyPlanAmount(inputText);
+              } else {
+                // If input contains non-numeric characters, display an error toast message
+                toast.error("Only numeric value is allowed for yearly amount");
+                // You can also perform any other action here, such as resetting the input field
+              }
+            }}
+          />
 
 
 
@@ -134,7 +134,7 @@ const CreatePlan = () => {
               onChange={(e) => setWifiService(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-               <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={wifiService === "Available"}>Available</option>
               <option value="Not Available" defaultValue={wifiService === "Not Available"} >Not Available</option>
             </select>
@@ -148,7 +148,7 @@ const CreatePlan = () => {
               onChange={(e) => setCardioClass(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-                <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={cardioClass === "Available"}>Available</option>
               <option value="Not Available" defaultValue={cardioClass === "Not Available"} >Not Available</option>
             </select>
@@ -163,7 +163,7 @@ const CreatePlan = () => {
               onChange={(e) => setRefreshment(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-               <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={refreshment === "Available"}>Available</option>
               <option value="Not Available" defaultValue={refreshment === "Not Available"} >Not Available</option>
             </select>
@@ -194,7 +194,7 @@ const CreatePlan = () => {
               onChange={(e) => setPersonalTrainer(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-                <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={personalTrainer === "Available"}>Available</option>
               <option value="Not Available" defaultValue={personalTrainer === "Not Available"} >Not Available</option>
             </select>
@@ -210,7 +210,7 @@ const CreatePlan = () => {
               onChange={(e) => setSpecialEvents(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-                <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={specialEvents === "Available"}>Available</option>
               <option value="Not Available" defaultValue={specialEvents === "Not Available"} >Not Available</option>
             </select>
@@ -226,7 +226,7 @@ const CreatePlan = () => {
               onChange={(e) => setLockerRooms(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-             <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={lockerRooms === "Available"}>Available</option>
               <option value="Not Available" defaultValue={lockerRooms === "Not Available"} >Not Available</option>
             </select>
@@ -242,7 +242,7 @@ const CreatePlan = () => {
               onChange={(e) => setCafeOrLounge(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-            <option value="">Choose availability</option>
+              <option value="">Choose availability</option>
               <option value="Available" defaultValue={cafeOrLounge === "Available"}>Available</option>
               <option value="Not Available" defaultValue={cafeOrLounge === "Not Available"} >Not Available</option>
             </select>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { Input, ButtonOutline, Loader } from '../components';
 import { useAuth } from '../context/auth';
 import { FiArrowUpRight } from "react-icons/fi";
@@ -18,11 +18,10 @@ const PlanSelection = () => {
   const [yearlyPlanAmount, setYearlyPlanAmount] = useState("");
   const [planType, setPlanType] = useState("");
   const [planId, setPlanId] = useState(planid);
-const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const getPlan = async () => {
     try {
-      // const res = await axios.get(`http://localhost:5000/api/v1/plan/get-plan/${planid}`);
       setLoading(true);
       const res = await axios.get(`${BASE_URL}/api/v1/plan/get-plan/${planid}`);
       if (res.data && res.data.success) {
@@ -40,10 +39,10 @@ const [loading, setLoading] = useState(false);
     setLoading(false);
   }
 
-  useEffect(() =>{
-    window.scrollTo({top:0, left:0, behavior:"smooth"});
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
     getPlan();
-  },[planid]);
+  }, [planid]);
 
   const calculatePlanAmount = (planType) => {
 
@@ -116,35 +115,35 @@ const [loading, setLoading] = useState(false);
 
 
     try {
-    
+
 
       const res = await axios.post(`${BASE_URL}/api/v1/subscription/create-subscription`, {
         userName, planType, planAmount, planId
       });
-      
 
-    if (res.data && res.data.success) {
-      toast.success(res.data.message);
-      navigate("/");
-    } else {
-      if (res.data && res.data.message === "You already have an active subscription") {
-        toast.error(res.data.message);
-        console.log(res.data.message);
-        navigate("/dashboard/user/plan-detail");
+
+      if (res.data && res.data.success) {
+        toast.success(res.data.message);
+        navigate("/");
       } else {
-        toast.error(res.data.message || "Failed to create subscription");
+        if (res.data && res.data.message === "You already have an active subscription") {
+          toast.error(res.data.message);
+          console.log(res.data.message);
+          navigate("/dashboard/user/plan-detail");
+        } else {
+          toast.error(res.data.message || "Failed to create subscription");
+        }
       }
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong while creating subscription");
+
     }
-  } catch (error) {
-    console.error(error);
-    toast.error("Something went wrong while creating subscription");
-   
-  }
 
   }
 
-  if(loading){
-    return <Loader/>
+  if (loading) {
+    return <Loader />
   }
 
   return (
@@ -159,7 +158,6 @@ const [loading, setLoading] = useState(false);
             name="username"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            pattern="[A-Za-z ]+"
             minLength="4"
             maxLength="30"
           />
@@ -171,7 +169,7 @@ const [loading, setLoading] = useState(false);
             value={planName}
             onChange={(e) => setPlanName(e.target.value)}
           />
-      
+
           <select
             value={planType}
             onChange={(e) => handleDurationChange(e.target.value)}
@@ -205,7 +203,7 @@ const [loading, setLoading] = useState(false);
             disabled // Disable user input for plan amount
           />
 
-             <Input
+          {/* <Input
             type="text"
             placeholder="Plan Id"
             name="planid"
@@ -213,7 +211,7 @@ const [loading, setLoading] = useState(false);
             onChange={(e) => setPlanId(e.target.value)}
             // pattern="[0-9]+"
             disabled // Disable user input for plan amount
-          />
+          /> */}
 
           <button type='submit' className='btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]'>Submit</button>
         </form>
@@ -223,45 +221,45 @@ const [loading, setLoading] = useState(false);
 
 
 
-{ planType === "1 Month" && <div className="container mx-auto px-6">
-     <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
+      {planType === "1 Month" && <div className="container mx-auto px-6">
+        <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
         <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-col-4
          gap-5 pt-20 '>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Water Stations"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Water Stations" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Locker Rooms"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Locker Rooms" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Special Events"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Special Events" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Wifi Service"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Wifi Service" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Cardio Class"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Cardio Class" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Refreshment Area"/> 
-          <IoClose className='text-red-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Refreshment Area" />
+            <IoClose className='text-red-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Smoothie Bar"/> 
-          <IoClose className='text-red-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Smoothie Bar" />
+            <IoClose className='text-red-700 text-4xl font-bold border-2 ' />
           </div>
-         
+
         </article>
-      </div>      
-}
+      </div>
+      }
 
 
 
@@ -270,143 +268,143 @@ const [loading, setLoading] = useState(false);
 
 
 
-{ planType === "1 Year" && <div className="container mx-auto px-6">
-     <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
+      {planType === "1 Year" && <div className="container mx-auto px-6">
+        <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
         <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-col-4
          gap-5 pt-20 '>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Water Stations"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Water Stations" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Locker Rooms"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Locker Rooms" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Special Events"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Special Events" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Wifi Service"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Wifi Service" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Cardio Class"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Cardio Class" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Café or Lounge"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Café or Lounge" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Smoothie Bar"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Smoothie Bar" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Personal Trainer"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Personal Trainer" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Group Fitness Classes"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Group Fitness Classes" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Refreshment"/> 
-          <IoClose className='text-red-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Refreshment" />
+            <IoClose className='text-red-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Sauna or Steam Room"/> 
-          <IoClose className='text-red-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Sauna or Steam Room" />
+            <IoClose className='text-red-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Childcare Services"/> 
-          <IoClose className='text-red-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Childcare Services" />
+            <IoClose className='text-red-700 text-4xl font-bold border-2 ' />
           </div>
-         
+
         </article>
-      </div>      
-}
+      </div>
+      }
 
 
 
 
-{ planName === "Ultimate Uplift" && <div className="container mx-auto px-6">
-     <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
+      {planName === "Ultimate Uplift" && <div className="container mx-auto px-6">
+        <h2 className='text-center text-4xl text-white font-bold py-2'>Plan Detail</h2>
         <article className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-col-4
          gap-5 pt-20 '>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Water Stations"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Water Stations" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Locker Rooms"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Locker Rooms" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Special Events"/> 
-          <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Special Events" />
+            <FiArrowUpRight className='text-green-500 text-4xl font-bold border-2 ' />
           </div>
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Wifi Service"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
-          </div>
-
-          <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Cardio Class"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Wifi Service" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Café or Lounge"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Cardio Class" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Smoothie Bar"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Café or Lounge" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Personal Trainer"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Smoothie Bar" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Group Fitness Classes"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Personal Trainer" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Refreshment"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Group Fitness Classes" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Sauna or Steam Room"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Refreshment" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Childcare Services"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
+            <ButtonOutline text="Sauna or Steam Room" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
           </div>
 
           <div className='flex gap-5 justify-center items-center'>
-          <ButtonOutline text="Equipment Rentals"/> 
-          <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 '/>
-          </div>         
-         
+            <ButtonOutline text="Childcare Services" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
+          </div>
+
+          <div className='flex gap-5 justify-center items-center'>
+            <ButtonOutline text="Equipment Rentals" />
+            <FiArrowUpRight className='text-green-700 text-4xl font-bold border-2 ' />
+          </div>
+
         </article>
-      </div>      
-}
+      </div>
+      }
 
 
     </section>

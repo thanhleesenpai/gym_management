@@ -10,17 +10,17 @@ const Plan = ({ planName, monthlyPlanAmount, yearlyPlanAmount, p_id }) => {
         <h3 className='text-white font-bold text-center text-2xl group-hover:text-indigo-600 transition-all ease-in-out'>
           {planName}
         </h3>
-        <img 
-          src={planImg1} 
-          alt="Plan Image" 
+        <img
+          src={planImg1}
+          alt="Plan Image"
           className='w-full rounded-lg object-cover h-[200px] group-hover:scale-110 transition-transform duration-300'
         />
         <div className='flex justify-around items-center w-full mt-4 gap-3'>
           <p className='text-white font-semibold text-xl bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md px-3 py-0 shadow-sm'>
-            Monthly: {monthlyPlanAmount} ₹
+            Monthly: {monthlyPlanAmount} $
           </p>
           <p className='text-white font-semibold text-xl bg-gradient-to-r from-green-500 to-teal-500 rounded-md px-3 py-0 shadow-sm'>
-            Yearly: {yearlyPlanAmount} ₹
+            Yearly: {yearlyPlanAmount} $
           </p>
         </div>
       </div>

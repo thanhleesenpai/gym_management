@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const planSchema = new mongoose.Schema({
 
     userName: {
@@ -69,6 +70,12 @@ const planSchema = new mongoose.Schema({
     cafeOrLounge: {
         type: String,
         required: true
+    },
+
+    planTrainer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        default: null
     },
 
 

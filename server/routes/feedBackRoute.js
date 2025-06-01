@@ -7,7 +7,7 @@ import {
   updateFeedbackById,
   deleteFeedbackById,
   feedbackCountController
-} from "../controlllers/feedbackController.js";
+} from "../controllers/feedbackController.js";
 
 const router = express.Router();
 
@@ -15,10 +15,10 @@ const router = express.Router();
 router.post('/create-feedback', requireSignIn, createFeedback);
 
 // GET - Get all Feedbacks
-router.get('/getall-feedback', getAllFeedbacks); 
+router.get('/getall-feedback', getAllFeedbacks);
 
 // GET - Get Feedback by ID
-router.get('/getsingle-feedback/:id', requireSignIn, getFeedbackById); 
+router.get('/getsingle-feedback/:id', requireSignIn, getFeedbackById);
 
 // PUT - Update Feedback by ID
 router.put('/update-feedback/:id', requireSignIn, updateFeedbackById);

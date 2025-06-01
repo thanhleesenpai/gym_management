@@ -1,6 +1,6 @@
 import JWT from "jsonwebtoken";
 // import User from "../models/User.js";
-import {User} from "../models/User.js";
+import { User } from "../models/User.js";
 import Subscription from "../models/Subscription.js";
 // protected routes token based
 const requireSignIn = async (req, res, next) => {
@@ -21,7 +21,7 @@ const requireSignIn = async (req, res, next) => {
 const isAdmin = async (req, res, next) => {
     try {
         const user = await User.findById(req.user._id);
-        if (user.role !== 1) {
+        if (user.role !== 3) {
             return res.status(401).json({
                 success: false,
                 message: "unAuthorized Access"
@@ -33,7 +33,7 @@ const isAdmin = async (req, res, next) => {
 
     } catch (error) {
         console.log(error);
-         res.status(401).json({
+        res.status(401).json({
             success: false,
             error,
             message: "Error in admin middleware"
@@ -42,6 +42,28 @@ const isAdmin = async (req, res, next) => {
 
 
 }
+
+// trainer access
+const isTrainer = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        if (user.role !== 2) {
+            return res.status(401).json({
+                success: false,
+                message: "Unauthorized: Trainer access only"
+            });
+        } else {
+            next();
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(401).json({
+            success: false,
+            error,
+            message: "Error in trainer middleware"
+        });
+    }
+};
 
 
 const isSubscribed = async (req, res, next) => {
@@ -64,5 +86,5 @@ const isSubscribed = async (req, res, next) => {
 };
 
 
-export { requireSignIn, isAdmin, isSubscribed };
+export { requireSignIn, isAdmin, isTrainer, isSubscribed };
 
