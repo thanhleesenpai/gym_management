@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -24,6 +23,7 @@ const PlanDetails = () => {
   const [refreshment, setRefreshment] = useState("");
   const [groupFitnessClasses, setGroupFitnessClasses] = useState("");
   const [personalTrainer, setPersonalTrainer] = useState("");
+  const [personalTrainerName, setPersonalTrainerName] = useState("Not Available");
   const [specialEvents, setSpecialEvents] = useState("");
   const [lockerRooms, setLockerRooms] = useState("");
   const [cafeOrLounge, setCafeOrLounge] = useState("");
@@ -42,6 +42,21 @@ const PlanDetails = () => {
         setRefreshment(res.data.plan.refreshment);
         setGroupFitnessClasses(res.data.plan.groupFitnessClasses);
         setPersonalTrainer(res.data.plan.personalTrainer);
+
+        // Fetch trainer name if personalTrainer exists and is not "Not Available"
+        if (res.data.plan.personalTrainer && res.data.plan.personalTrainer !== "Not Available") {
+          try {
+            const trainerRes = await axios.get(`${BASE_URL}/api/v1/user/users/${res.data.plan.personalTrainer}`);
+            console.log(trainerRes.data);
+            if (trainerRes.data) {
+              setPersonalTrainerName(trainerRes.data.name);
+              // console.log("Trainer Name:", trainerRes.data.name);
+            }
+          } catch (err) {
+            console.log(err);
+            setPersonalTrainerName("Not Available");
+          }
+        }
         setSpecialEvents(res.data.plan.specialEvents);
         setLockerRooms(res.data.plan.lockerRooms);
         setCafeOrLounge(res.data.plan.cafeOrLounge);
@@ -77,17 +92,23 @@ const PlanDetails = () => {
             { label: "Wifi Service", value: wifiService },
             { label: "Cardio Class", value: cardioClass },
             { label: "Café or Lounge", value: cafeOrLounge },
-            { label: "Personal Trainer", value: personalTrainer },
             { label: "Group Fitness Classes", value: groupFitnessClasses },
             { label: "Refreshment", value: refreshment },
+            { label: "Personal Trainer", value: personalTrainerName },
           ].map((item, index) => (
-            <div 
-              key={index} 
-              className='flex items-center justify-center gap-3 p-4 bg-gray-800 rounded-lg shadow-lg' 
-              data-aos="zoom-in" // Add AOS attribute here
+            <div
+              key={index}
+              className='flex items-center justify-center gap-3 p-4 bg-gray-800 rounded-lg shadow-lg'
+              data-aos="zoom-in"
             >
-              <ButtonOutline text={item.label} />
-              {item.value === "Available" ? (
+              <ButtonOutline
+                text={
+                  item.label === "Personal Trainer" && personalTrainerName !== "Not Available"
+                    ? `Trainer: ${personalTrainerName}`
+                    : item.label
+                }
+              />
+              {item.value != "Not Available" ? (
                 <TiTick className='text-green-500 text-4xl' />
               ) : (
                 <IoClose className='text-red-600 text-4xl' />

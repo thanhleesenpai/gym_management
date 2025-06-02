@@ -1,5 +1,16 @@
 import { User } from "../models/User.js";
 
+// Lấy tất cả trainer
+export const getAllTrainers = async (req, res) => {
+    try {
+        const trainers = await User.find({ role: 2 }).select("name email _id");
+        console.log(trainers);
+        res.json(trainers);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching trainers", error });
+    }
+};
+
 // Gán trainer
 export const assignTrainer = async (req, res) => {
     const { userId } = req.params;

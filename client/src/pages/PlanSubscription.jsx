@@ -152,6 +152,7 @@ const PlanSelection = () => {
         <form className='flex w-full h-screen justify-center items-center flex-col gap-5' onSubmit={onSubmit}>
           <h2 className='text-center text-4xl text-white font-bold'>Choose Plan</h2>
 
+          <label className="text-white text-sm font-bold text-left w-3/5">User Name</label>
           <Input
             type="text"
             placeholder="User Name"
@@ -162,6 +163,7 @@ const PlanSelection = () => {
             maxLength="30"
           />
 
+          <label className="text-white text-sm font-bold text-left w-3/5">Plan Name</label>
           <Input
             type="text"
             placeholder="Plan Name"
@@ -170,6 +172,7 @@ const PlanSelection = () => {
             onChange={(e) => setPlanName(e.target.value)}
           />
 
+          <label className="text-white text-sm font-bold text-left w-3/5">Plan Duration</label>
           <select
             value={planType}
             onChange={(e) => handleDurationChange(e.target.value)}
@@ -193,6 +196,7 @@ const PlanSelection = () => {
           </select>
           {/* </div> */}
 
+          <label className="text-white text-sm font-bold text-left w-3/5">Plan Amount</label>
           <Input
             type="text"
             placeholder="Plan Amount"

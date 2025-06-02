@@ -72,11 +72,6 @@ const planSchema = new mongoose.Schema({
         required: true
     },
 
-    planTrainer: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        default: null
-    },
 
 
 }, { timestamps: true });

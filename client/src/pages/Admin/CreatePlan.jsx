@@ -16,6 +16,8 @@ const CreatePlan = () => {
   const [refreshment, setRefreshment] = useState("Not Available");
   const [groupFitnessClasses, setGroupFitnessClasses] = useState("Not Available");
   const [personalTrainer, setPersonalTrainer] = useState("Not Available");
+  const [selectedTrainerId, setSelectedTrainerId] = useState(""); // Add this line
+  const [trainers, setTrainers] = useState([]);
   const [specialEvents, setSpecialEvents] = useState("Not Available");
   const [lockerRooms, setLockerRooms] = useState("Not Available");
   const [cafeOrLounge, setCafeOrLounge] = useState("Not Available");
@@ -24,21 +26,50 @@ const CreatePlan = () => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
 
+  useEffect(() => {
+    const fetchTrainers = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/v1/user/trainers`);
+        console.log(response.data);
+        if (Array.isArray(response.data)) {
+          setTrainers(response.data);
+        }
+        console.log(trainers);
+      } catch (error) {
+        console.error('Error fetching trainers:', error);
+        toast.error('Failed to load trainers');
+      }
+    };
+    fetchTrainers();
+  }, []);
 
 
 
-  console.log(planName, monthlyPlanAmount, yearlyPlanAmount, waterStations, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, lockerRooms, cafeOrLounge);
+
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(planName, monthlyPlanAmount, yearlyPlanAmount, waterStations, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, lockerRooms, cafeOrLounge);
+
 
     try {
 
       const res = await axios.post(`${BASE_URL}/api/v1/plan/create-plan`, {
-        planName, monthlyPlanAmount, yearlyPlanAmount, waterStations, lockerRooms, wifiService, cardioClass, refreshment, groupFitnessClasses, personalTrainer, specialEvents, cafeOrLounge
+        planName,
+        monthlyPlanAmount,
+        yearlyPlanAmount,
+        waterStations,
+        lockerRooms,
+        wifiService,
+        cardioClass,
+        refreshment,
+        groupFitnessClasses,
+        personalTrainer: selectedTrainerId || "Not Available", // Update this line
+        specialEvents,
+        cafeOrLounge
       });
-      console.log(res);
+
+      console.log(res.data);
+
       if (res.data && res.data.success) {
         toast.success(res.data.message);
         navigate("/dashboard/admin/plans");
@@ -46,8 +77,7 @@ const CreatePlan = () => {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.log(error);
-      console.log("something went wrong..");
+      console.error(error);
       toast.error("something went wrong");
     }
   }
@@ -119,7 +149,7 @@ const CreatePlan = () => {
               onChange={(e) => setWaterStations(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={waterStations === "Available"}>Available</option>
               <option value="Not Available" defaultValue={waterStations === "Not Available"} >Not Available</option>
             </select>
@@ -134,7 +164,7 @@ const CreatePlan = () => {
               onChange={(e) => setWifiService(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={wifiService === "Available"}>Available</option>
               <option value="Not Available" defaultValue={wifiService === "Not Available"} >Not Available</option>
             </select>
@@ -148,7 +178,7 @@ const CreatePlan = () => {
               onChange={(e) => setCardioClass(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={cardioClass === "Available"}>Available</option>
               <option value="Not Available" defaultValue={cardioClass === "Not Available"} >Not Available</option>
             </select>
@@ -163,7 +193,7 @@ const CreatePlan = () => {
               onChange={(e) => setRefreshment(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={refreshment === "Available"}>Available</option>
               <option value="Not Available" defaultValue={refreshment === "Not Available"} >Not Available</option>
             </select>
@@ -178,25 +208,9 @@ const CreatePlan = () => {
               onChange={(e) => setGroupFitnessClasses(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={groupFitnessClasses === "Available"}>Available</option>
               <option value="Not Available" defaultValue={groupFitnessClasses === "Not Available"} >Not Available</option>
-            </select>
-          </div>
-
-
-
-          <div className="flex flex-col w-full sm:max-w-[750px]">
-            <label htmlFor="personalTrainer" className="text-white text-sm font-bold mb-1">personal Trainer</label>
-            <select
-              id="personalTrainer"
-              value={personalTrainer}
-              onChange={(e) => setPersonalTrainer(e.target.value)}
-              className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
-            >
-              <option value="">Choose availability</option>
-              <option value="Available" defaultValue={personalTrainer === "Available"}>Available</option>
-              <option value="Not Available" defaultValue={personalTrainer === "Not Available"} >Not Available</option>
             </select>
           </div>
 
@@ -210,7 +224,7 @@ const CreatePlan = () => {
               onChange={(e) => setSpecialEvents(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={specialEvents === "Available"}>Available</option>
               <option value="Not Available" defaultValue={specialEvents === "Not Available"} >Not Available</option>
             </select>
@@ -226,7 +240,7 @@ const CreatePlan = () => {
               onChange={(e) => setLockerRooms(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={lockerRooms === "Available"}>Available</option>
               <option value="Not Available" defaultValue={lockerRooms === "Not Available"} >Not Available</option>
             </select>
@@ -242,9 +256,32 @@ const CreatePlan = () => {
               onChange={(e) => setCafeOrLounge(e.target.value)}
               className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
             >
-              <option value="">Choose availability</option>
+
               <option value="Available" defaultValue={cafeOrLounge === "Available"}>Available</option>
               <option value="Not Available" defaultValue={cafeOrLounge === "Not Available"} >Not Available</option>
+            </select>
+          </div>
+
+
+
+          <div className="flex flex-col w-full sm:max-w-[750px]">
+            <label htmlFor="personalTrainer" className="text-white text-sm font-bold mb-1">personal Trainer</label>
+            <select
+              id="personalTrainer"
+              value={selectedTrainerId} // Change this line
+              onChange={(e) => {
+                setSelectedTrainerId(e.target.value);
+                setPersonalTrainer(e.target.value);
+              }} // Change this line
+              className="w-full px-4 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium text-black"
+            >
+
+              <option value="Not Available">Not Available</option>
+              {trainers.map(trainer => (
+                <option key={trainer._id} value={trainer._id}>
+                  {trainer.name}
+                </option>
+              ))}
             </select>
           </div>
 
