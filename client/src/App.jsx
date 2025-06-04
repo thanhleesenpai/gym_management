@@ -6,6 +6,8 @@ import TrainerDashBoard from "./pages/Trainer/TrainerDashBoard";
 import TrainerClients from "./pages/Trainer/TrainerClients";
 import ManageWorkouts from "./pages/Trainer/ManageWorkouts";
 import UserTrainerWorkouts from "./pages/User/UserTrainerWorkouts";
+import UserReceivedFeedbacks from "./pages/User/UserReceivedFeedbacks";
+import TrainerReceivedFeedbacks from "./pages/Trainer/TrainerReceivedFeedbacks";
 // import PlanFullDetail from './pages/User/planFullDetail';
 import { Toaster } from 'react-hot-toast';
 import { useAuth } from "./context/auth";
@@ -44,6 +46,7 @@ const App = () => {
           <Route path='user/favourite-exercises' element={<FavouriteExercises />} />
           <Route path='user/feedbacks' element={<Feedbacks />} />
           <Route path='user/trainer-workouts' element={<UserTrainerWorkouts />} />
+          <Route path='user/received-feedbacks' element={<UserReceivedFeedbacks />} />
         </Route>
 
 
@@ -67,6 +70,8 @@ const App = () => {
           <Route path='trainer/profile' element={<Profile />} />
           <Route path='trainer/clients' element={<TrainerClients />} />
           <Route path='trainer/workouts' element={<ManageWorkouts />} />
+          <Route path='trainer/feedbacks' element={<Feedbacks />} />
+          <Route path='trainer/received-feedbacks' element={<TrainerReceivedFeedbacks />} />
         </Route>
       </Routes>
       <Footer />

@@ -43,8 +43,18 @@ const TrainerDashBoard = () => {
                         to="/dashboard/trainer/feedbacks"
                         data-aos="fade-up"
                     >
-                        <h2 className='text-white font-bold text-2xl'>Student Feedbacks</h2>
+                        <h2 className='text-white font-bold text-2xl'>My Feedbacks</h2>
                     </Link>
+
+                    <Link
+                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        to="/dashboard/trainer/received-feedbacks"
+                        data-aos="fade-up"
+                    >
+                        <h2 className='text-white font-bold text-2xl'>Received Feedbacks</h2>
+                    </Link>
+
+
                 </div>
             </div>
         </section>

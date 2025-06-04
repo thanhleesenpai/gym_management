@@ -90,6 +90,11 @@ const userSchema = new mongoose.Schema({
             reps: Number,
             duration: String
         }]
+    },
+
+    imgUrl: {
+        type: String,
+        default: "https://hoseiki.vn/wp-content/uploads/2025/03/avatar-mac-dinh-5.jpg"
     }
 
 }, { timestamps: true });

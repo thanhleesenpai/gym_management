@@ -6,7 +6,8 @@ import {
   getFeedbackById,
   updateFeedbackById,
   deleteFeedbackById,
-  feedbackCountController
+  feedbackCountController,
+  getFeedbacksForUser // import hàm mới
 } from "../controllers/feedbackController.js";
 
 const router = express.Router();
@@ -25,6 +26,9 @@ router.put('/update-feedback/:id', requireSignIn, updateFeedbackById);
 
 // DELETE - Delete Feedback by ID
 router.delete('/delete-feedback/:id', requireSignIn, deleteFeedbackById);
+
+// GET - Get Feedbacks sent to current user (for user/trainer/admin)
+router.get('/received-feedbacks', requireSignIn, getFeedbacksForUser);
 
 router.get("/total-feedback", feedbackCountController);
 

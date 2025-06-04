@@ -29,10 +29,10 @@ const router = express.Router();
 router.get("/users", requireSignIn, getAllUsers);
 
 // Lấy người dùng theo ID
-router.get("/users/:userId", requireSignIn, getUserById);
+router.get("/users/:userId", getUserById);
 
 // Lấy tất cả huấn luyện viên
-router.get("/trainers", requireSignIn, getAllTrainers);
+router.get("/trainers", getAllTrainers);
 
 // Gán huấn luyện viên cho người dùng
 router.post("/:userId/trainer", requireSignIn, assignTrainer);

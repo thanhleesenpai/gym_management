@@ -283,6 +283,15 @@ const UserDashBoard = () => {
           >
             <h2 className='text-white font-bold text-3xl'>Trainer Workouts</h2>
           </Link>
+
+          <Link
+            className='p-5 border border-white hover:bg-green-600 transition-all'
+            to="/dashboard/user/received-feedbacks"
+            data-aos="fade-up"
+          >
+            <h2 className='text-white font-bold text-2xl'>Received Feedbacks</h2>
+          </Link>
+
         </div>
       </div>
     </section>

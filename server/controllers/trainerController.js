@@ -3,7 +3,7 @@ import { User } from "../models/User.js";
 // Lấy tất cả trainer
 export const getAllTrainers = async (req, res) => {
     try {
-        const trainers = await User.find({ role: 2 }).select("name email _id");
+        const trainers = await User.find({ role: 2 }).select("name email _id imgUrl");
         console.log(trainers);
         res.json(trainers);
     } catch (error) {
