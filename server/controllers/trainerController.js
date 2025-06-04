@@ -17,10 +17,32 @@ export const assignTrainer = async (req, res) => {
     const { trainerId } = req.body;
 
     try {
-        const user = await User.findByIdAndUpdate(userId, { trainerId }, { new: true });
-        res.json({ message: "Trainer assigned", user });
+        // Check if trainer exists and is actually a trainer (role 2)
+        const trainer = await User.findOne({ _id: trainerId, role: 2 });
+        if (!trainer) {
+            return res.status(404).json({ message: "Trainer not found" });
+        }
+
+        const user = await User.findByIdAndUpdate(
+            userId,
+            { trainerId },
+            { new: true }
+        );
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({
+            message: "Trainer assigned successfully",
+            user
+        });
     } catch (error) {
-        res.status(500).json({ message: "Error assigning trainer", error });
+        console.error("Error in assignTrainer:", error);
+        res.status(500).json({
+            message: "Error assigning trainer",
+            error: error.message
+        });
     }
 };
 
@@ -41,17 +63,26 @@ export const getClientsWorkouts = async (req, res) => {
     const { trainerId } = req.params;
 
     try {
-        const clients = await User.find({ trainerId });
+        const clients = await User.find({ trainerId })
+            .select('_id name email contact city workoutSchedule');
 
-        const data = clients.map(client => ({
-            clientId: client._id,
+        if (!clients || clients.length === 0) {
+            return res.status(200).json([]);
+        }
+
+        const formattedClients = clients.map(client => ({
+            _id: client._id,
             name: client.name,
             email: client.email,
-            schedule: client.workoutSchedule
+            contact: client.contact,
+            city: client.city,
+            workoutSchedule: client.workoutSchedule // Thêm dòng này nếu muốn trả về lịch tập
         }));
 
-        res.json(data);
+        res.status(200).json(formattedClients);
+
     } catch (error) {
-        res.status(500).json({ message: "Error fetching client workouts", error });
+        console.error("Error fetching client workouts:", error);
+        res.status(500).json({ message: "Error fetching client workouts" });
     }
 };

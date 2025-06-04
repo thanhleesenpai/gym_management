@@ -2,8 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollButton, PrivateRoute, AdminRoute, Modal } from "./components";
 import TrainerRoute from "./components/trainer/TrainerRoute";
 import { Register, Login, ForgotPassword, Home, PlanSubscription, Error, Exercise, ExerciseDetail, Profile, UserDashBoard, PlanDetail, AdminDashBoard, CreatePlan, UpdatePlan, Plans, SubscriberList, UserList, FavouriteExercises, PlanDetails, PlanFullDetail, ContactUs, TrainerDetails, Feedback, Feedbacks, FeedbackList } from "./pages";
-import TrainerDashBoard from "./pages/Trainer/TrainerDashboard";
+import TrainerDashBoard from "./pages/Trainer/TrainerDashBoard";
 import TrainerClients from "./pages/Trainer/TrainerClients";
+import ManageWorkouts from "./pages/Trainer/ManageWorkouts";
+import UserTrainerWorkouts from "./pages/User/UserTrainerWorkouts";
 // import PlanFullDetail from './pages/User/planFullDetail';
 import { Toaster } from 'react-hot-toast';
 import { useAuth } from "./context/auth";
@@ -41,6 +43,7 @@ const App = () => {
           <Route path='user/plan-detail-full/:planid' element={<PlanFullDetail />} />
           <Route path='user/favourite-exercises' element={<FavouriteExercises />} />
           <Route path='user/feedbacks' element={<Feedbacks />} />
+          <Route path='user/trainer-workouts' element={<UserTrainerWorkouts />} />
         </Route>
 
 
@@ -63,7 +66,7 @@ const App = () => {
           <Route path="trainer" element={<TrainerDashBoard />} />
           <Route path='trainer/profile' element={<Profile />} />
           <Route path='trainer/clients' element={<TrainerClients />} />
-
+          <Route path='trainer/workouts' element={<ManageWorkouts />} />
         </Route>
       </Routes>
       <Footer />

@@ -19,6 +19,7 @@ const PlanSelection = () => {
   const [planType, setPlanType] = useState("");
   const [planId, setPlanId] = useState(planid);
   const [loading, setLoading] = useState(false);
+  const [personalTrainer, setPersonalTrainer] = useState(""); // Add this line
 
   const getPlan = async () => {
     try {
@@ -28,6 +29,7 @@ const PlanSelection = () => {
         setPlanName(res.data.plan.planName);
         setMonthlyPlanAmount(res.data.plan.monthlyPlanAmount);
         setYearlyPlanAmount(res.data.plan.yearlyPlanAmount);
+        setPersonalTrainer(res.data.plan.personalTrainer); // Add this line
         console.log(res.data.plan);
       }
       setLoading(false);
@@ -111,18 +113,25 @@ const PlanSelection = () => {
     e.preventDefault();
     console.log(userName, planName, planAmount, planType, planId);
 
-
-
-
     try {
-
-
+      // Create subscription
       const res = await axios.post(`${BASE_URL}/api/v1/subscription/create-subscription`, {
         userName, planType, planAmount, planId
       });
 
-
       if (res.data && res.data.success) {
+        // If plan has a trainer, assign trainer to user
+        if (personalTrainer && personalTrainer !== "Not Available") {
+          try {
+            await axios.post(`${BASE_URL}/api/v1/user/${auth.user._id}/trainer`, {
+              trainerId: personalTrainer
+            });
+            console.log("Trainer assigned successfully");
+          } catch (error) {
+            console.error("Error assigning trainer:", error);
+          }
+        }
+
         toast.success(res.data.message);
         navigate("/");
       } else {

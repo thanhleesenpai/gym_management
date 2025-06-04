@@ -12,10 +12,9 @@ import {
 import {
     addWorkout,
     getAllWorkouts,
-    getWorkoutByDate,
-    deleteWorkoutByDate,
-    updateWorkoutByDate
-
+    getWorkoutsByDay,
+    updateWorkout,
+    deleteWorkout
 } from "../controllers/workoutController.js";
 
 import {
@@ -45,16 +44,16 @@ router.get("/:userId/trainer", requireSignIn, getTrainer);
 router.post("/:userId/workout", requireSignIn, isTrainer, addWorkout);
 
 // Lấy lịch tập của người dùng
-router.get("/:userId/workout", requireSignIn, getAllWorkouts);
+router.get("/:userId/workouts", requireSignIn, getAllWorkouts);
 
 // Lấy lịch tập theo ngày
-router.get("/:userId/workout/:date", requireSignIn, getWorkoutByDate);
+router.get("/:userId/workouts/:day", requireSignIn, getWorkoutsByDay);
 
 // Cập nhật lịch tập theo ngày
-router.put("/:userId/workout/:date", requireSignIn, isTrainer, updateWorkoutByDate);
+router.put("/:userId/workouts/:day/:workoutId", requireSignIn, isTrainer, updateWorkout);
 
 // Xóa lịch tập theo ngày
-router.delete("/:userId/workout/:date", requireSignIn, isTrainer, deleteWorkoutByDate);
+router.delete("/:userId/workouts/:day/:workoutId", requireSignIn, isTrainer, deleteWorkout);
 
 // Lấy lịch tập của tất cả khách hàng của huấn luyện viên
 router.get("/trainer/:trainerId/clients/workouts", requireSignIn, isTrainer, getClientsWorkouts);

@@ -39,23 +39,58 @@ const userSchema = new mongoose.Schema({
         default: null
     },
 
-    // Danh sách bài tập theo ngày
-    workoutSchedule: [
-        {
-            date: {
-                type: Date,
-                required: true
-            },
-            exercises: [
-                {
-                    name: String,
-                    reps: Number,
-                    sets: Number,
-                    duration: String
-                }
-            ]
-        }
-    ]
+    // Danh sách bài tập theo thứ trong tuần
+    workoutSchedule: {
+        Monday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Tuesday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Wednesday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Thursday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Friday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Saturday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }],
+        Sunday: [{
+            exerciseId: String,
+            name: String,
+            sets: Number,
+            reps: Number,
+            duration: String
+        }]
+    }
 
 }, { timestamps: true });
 
