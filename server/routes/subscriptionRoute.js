@@ -1,6 +1,6 @@
 import express from "express";
 import {isAdmin, requireSignIn} from "../Middlewares/authMiddleware.js";
-import {createSubscriptionPlanController, updateSubscriptionController, deleteSubscriptionController, getAllSubscriptionsController, getSubscriptionController, subscriptionCountController} from "../controlllers/subscriptionController.js"
+import {createSubscriptionPlanController, updateSubscriptionController, deleteSubscriptionController, getAllSubscriptionsController, getSubscriptionController, subscriptionCountController} from "../controllers/subscriptionController.js"
 const router = express.Router();
 
 // plan - choose

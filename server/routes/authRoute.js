@@ -1,6 +1,6 @@
 import express from "express";
 import {requireSignIn, isAdmin} from "../Middlewares/authMiddleware.js";
-import {registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser } from "../controlllers/authController.js";
+import {registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser } from "../controllers/authController.js";
 const router = express.Router();
 
 // register

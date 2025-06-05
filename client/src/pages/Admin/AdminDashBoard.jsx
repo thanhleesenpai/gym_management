@@ -176,12 +176,13 @@ const AdminDashBoard = () => {
           <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/contact-us`} data-aos="fade-up" data-aos-delay="300">
             <h2 className='text-white font-bold text-3xl'>Queries: {contactCount !== null ? contactCount : "Loading..."}</h2>
           </Link>
-          {feedbackCount !== null && (
-            <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/feedbacks`} data-aos="fade-up" data-aos-delay="400">
-              <h2 className='text-white font-bold text-3xl'>Feedbacks: {feedbackCount !== null ? feedbackCount : "Loading..."}</h2>
-            </Link>
-          )}
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/statistics-analysis`} data-aos="fade-up" data-aos-delay="500">
+          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/gym-room`} data-aos="fade-up" data-aos-delay="400">
+            <h2 className='text-white font-bold text-3xl'>Gym Rooms</h2>
+          </Link>
+          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/equipment`} data-aos="fade-up" data-aos-delay="500">
+            <h2 className='text-white font-bold text-3xl'>Equipment</h2>
+          </Link>
+          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/statistics-analysis`} data-aos="fade-up" data-aos-delay="600">
             <h2 className='text-white font-bold text-3xl'>Statistics Analysis</h2>
           </Link>
         </div>

@@ -115,13 +115,17 @@ const StatisticsAnalysis = () => {
           </div>
           <div className="p-5 border border-white hover:bg-blue-600 transition-all">
             <h2 className="text-white font-bold text-2xl">Average Rating</h2>
-            <p className="text-white text-lg">{averageRating}</p>
+            <p className="text-white text-lg">{averageRating} ⭐</p>
           </div>
         </div>
         <div className="mt-10">
           <Heading name="Monthly Revenue Chart" />
           <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={subscribersByMonth}>
+            <BarChart
+              data={Object.entries(monthlyIncome)
+                .sort(([a], [b]) => new Date(a) - new Date(b)) // Sắp xếp theo thứ tự thời gian
+                .map(([key, value]) => ({ month: key, revenue: value.toFixed(2) }))} // Chuẩn hóa dữ liệu cho biểu đồ
+            >
               <XAxis dataKey="month" stroke="#ffffff" />
               <YAxis stroke="#ffffff" />
               <Tooltip />

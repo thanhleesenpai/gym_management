@@ -41,6 +41,7 @@ const FeedbackComponent = ({ userImg, rating, comment, name, date, i, feedbackId
       </p>
       <p className='text-red-500 text-md font-medium'>
         <span className='font-semibold'>Rating:</span> <span className='text-white group-hover:text-black'>{rating}</span>
+        <span>⭐</span>
       </p>
       <p className='text-gray-600 group-hover:text-gray-800 text-md font-medium'>
         <span className='font-semibold'>Date:</span> {readableDate}
