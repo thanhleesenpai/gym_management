@@ -102,7 +102,7 @@ const loginController = async (req, res) => {
                 city: user.city,
                 contact: user.contact,
                 // question:user.question,
-                // role:user.role,
+                role: user.role,
                 _id: user._id,
             },
             token,
@@ -127,39 +127,39 @@ const loginController = async (req, res) => {
 const forgotPasswordController = async (req, res) => {
 
     try {
-        const { email, newPassword} = req.body;
+        const { email, newPassword } = req.body;
 
         if (!email) {
             return res.json({ message: "Email is required" });
         }
-        
+
         if (!newPassword) {
             return res.json({ message: "New Password is required" });
         }
-        
-        const user = await User.findOne({email});
+
+        const user = await User.findOne({ email });
 
         if (!user) {
-           return res.status(404).json({
-                message:"Wrong Email or Question",
-                success:false,
+            return res.status(404).json({
+                message: "Wrong Email or Question",
+                success: false,
             });
         }
 
         const hashedPassword = await hashPassword(newPassword);
 
-        await User.findByIdAndUpdate(user._id, {password: hashedPassword});
+        await User.findByIdAndUpdate(user._id, { password: hashedPassword });
 
         res.status(200).json({
-            message:"password change successfully",
-            success:true,
+            message: "password change successfully",
+            success: true,
         });
-        
+
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            message:"something went wrong",
-            success:false,
+            message: "something went wrong",
+            success: false,
             error
         });
     }
@@ -171,51 +171,49 @@ const forgotPasswordController = async (req, res) => {
 
 const updateProfileController = async (req, res) => {
     try {
-      const { name, email, password, city, contact } = req.body;
-      const user = await User.findById(req.user._id);
-      //password
-      if (password && password.length < 6) {
-        return res.json({ error: "Passsword is required and 6 character long" });
-      }
-      const hashedPassword = password ? await hashPassword(password) : undefined;
-      const updatedUser = await User.findByIdAndUpdate(
-        req.user._id,
-        {
-          name: name || user.name,
-          password: hashedPassword || user.password,
-          contact: contact || user.contact,
-          city: city || user.city,
-        },
-        { new: true }
-      );
-      res.status(200).send({
-        success: true,
-        message: "Profile Updated SUccessfully",
-        updatedUser,
-      });
+        const { name, email, password, city, contact } = req.body;
+        const user = await User.findById(req.user._id);
+        //password
+        if (password && password.length < 6) {
+            return res.json({ error: "Passsword is required and 6 character long" });
+        }
+        const hashedPassword = password ? await hashPassword(password) : undefined;
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user._id,
+            {
+                name: name || user.name,
+                password: hashedPassword || user.password,
+                contact: contact || user.contact,
+                city: city || user.city,
+            },
+            { new: true }
+        );
+        res.status(200).send({
+            success: true,
+            message: "Profile Updated SUccessfully",
+            updatedUser,
+        });
     } catch (error) {
-      console.log(error);
-      res.status(400).send({
-        success: false,
-        message: "Error WHile Update profile",
-        error,
-      });
+        console.log(error);
+        res.status(400).send({
+            success: false,
+            message: "Error WHile Update profile",
+            error,
+        });
     }
-  };
-
-
+};
 
 
 const testController = (req, res) => {
     res.status(200).json({
-       message:"routes is required",
-       success:true,
-   })
-   console.log("routes protected");
-   }
+        message: "routes is required",
+        success: true,
+    })
+    console.log("routes protected");
+}
 
-   
-   const userCountController = async (req, res) => {
+
+const userCountController = async (req, res) => {
     try {
         const total = await User.find({}).estimatedDocumentCount();
         res.status(200).json({
@@ -255,7 +253,7 @@ const getSubscriptionByUser = async (req, res) => {
         if (!subscription) {
             return res.status(404).json({ message: 'Subscription not found' });
         }
-        res.status(200).json({success:true, subscription});
+        res.status(200).json({ success: true, subscription });
     } catch (error) {
         console.error('Error fetching subscription:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -269,7 +267,7 @@ const getAllSubscriptionByUser = async (req, res) => {
         if (!subscription) {
             return res.status(404).json({ message: 'Subscription not found' });
         }
-        res.status(200).json({success:true, subscription});
+        res.status(200).json({ success: true, subscription });
     } catch (error) {
         console.error('Error fetching All subscription:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -284,7 +282,7 @@ const getAllFeedbacksByUser = async (req, res) => {
         if (!newFeedback) {
             return res.status(404).json({ message: 'Feedback not found' });
         }
-        res.status(200).json({success:true, newFeedback});
+        res.status(200).json({ success: true, newFeedback });
     } catch (error) {
         console.error('Error fetching All Feedback:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -292,5 +290,4 @@ const getAllFeedbacksByUser = async (req, res) => {
 };
 
 
-
-export { registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController,getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser };
+export { registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser };

@@ -65,12 +65,7 @@ const createSubscriptionPlanController = async (req, res) => {
 // Get all subscriptions
 const getAllSubscriptionsController = async (req, res) => {
     try {
-        const subscriptions = await Subscription.find()
-            .populate('user', 'name email') // Populate user với các trường cần thiết
-            .populate('plan', 'planName planAmount'); // Populate plan với các trường cần thiết
-
-        console.log("Fetched Subscriptions:", subscriptions); // Kiểm tra dữ liệu trả về
-
+        const subscriptions = await Subscription.find().populate('user').populate('plan');
         return res.status(200).json({ success: true, subscriptions });
     } catch (error) {
         console.error("Error getting subscriptions:", error);

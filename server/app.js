@@ -9,7 +9,7 @@ const app = express();
 // initialise downlaoded package
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 dotenv.config();
 
@@ -24,9 +24,10 @@ import ContactRoute from "./routes/contactRoute.js";
 import feedBackRoute from "./routes/feedBackRoute.js";
 import gymRoomRoute from "./routes/GymRoomRoutes.js";
 import equipmentRoute from "./routes/EquipmentRoutes.js";
+import userRoute from "./routes/userRoute.js";
 
-app.get("/", (req, res) =>{
-res.send("server is running successfully");
+app.get("/", (req, res) => {
+    res.send("server is running successfully");
 });
 
 app.use("/api/v1/auth", authRoute);
@@ -36,17 +37,17 @@ app.use("/api/v1/contact", ContactRoute);
 app.use("/api/v1/feedback", feedBackRoute);
 app.use("/api/v1/gym-room", gymRoomRoute);
 app.use("/api/v1/equipment", equipmentRoute);
-
+app.use("/api/v1/user", userRoute);
 
 const startServer = async () => {
-    try{
+    try {
         connectDB(process.env.MONGODB_URI);
         app.listen(PORT, () => {
-         console.log(`server is running on port ${PORT}`);
-        });        
+            console.log(`server is running on port ${PORT}`);
+        });
     }
 
-    catch(err){
+    catch (err) {
         console.log(err || "some error in starting server");
     }
 }

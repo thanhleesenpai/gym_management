@@ -1,6 +1,6 @@
 import express from "express";
-import {requireSignIn, isAdmin} from "../Middlewares/authMiddleware.js";
-import {registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser } from "../controllers/authController.js";
+import { requireSignIn, isAdmin, isTrainer } from "../Middlewares/authMiddleware.js";
+import { registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser } from "../controllers/authController.js";
 const router = express.Router();
 
 // register
@@ -15,16 +15,21 @@ router.post("/forgot-password", forgotPasswordController);
 
 // jwt || get method test
 
-router.get("/test", requireSignIn, isAdmin,  testController);
+router.get("/test", requireSignIn, isAdmin, testController);
 
 // user auth protect routes || dashboard
 router.get("/user-auth", requireSignIn, (req, res) => {
-    res.status(200).json({ok: true});
+    res.status(200).json({ ok: true });
 });
 
 // admin auth protect routes || admin dashboard
 router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
-    res.status(200).json({ok: true});
+    res.status(200).json({ ok: true });
+});
+
+// trainer auth protect routes || trainer dashboard
+router.get("/trainer-auth", requireSignIn, isTrainer, (req, res) => {
+    res.status(200).json({ ok: true });
 });
 
 

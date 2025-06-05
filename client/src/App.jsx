@@ -1,6 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollButton, PrivateRoute, AdminRoute, Modal } from "./components";
 import { Register, Login, ForgotPassword, Home, PlanSubscription, Error, Exercise, ExerciseDetail, Profile, UserDashBoard, PlanDetail, AdminDashBoard, CreatePlan, UpdatePlan, Plans, SubscriberList, UserList, FavouriteExercises, PlanDetails, PlanFullDetail, ContactUs, TrainerDetails, Feedback, Feedbacks, FeedbackList, StatisticsAnalysis, GymRoom, Equipment} from "./pages";
+import TrainerRoute from "./components/trainer/TrainerRoute";
+import TrainerDashBoard from "./pages/Trainer/TrainerDashBoard";
+import TrainerClients from "./pages/Trainer/TrainerClients";
+import ManageWorkouts from "./pages/Trainer/ManageWorkouts";
+import UserTrainerWorkouts from "./pages/User/UserTrainerWorkouts";
+import UserReceivedFeedbacks from "./pages/User/UserReceivedFeedbacks";
+import TrainerReceivedFeedbacks from "./pages/Trainer/TrainerReceivedFeedbacks";
 // import PlanFullDetail from './pages/User/planFullDetail';
 import { Toaster } from 'react-hot-toast';
 import { useAuth } from "./context/auth";
@@ -15,7 +22,7 @@ const App = () => {
       <ScrollButton />
       <Header />
       <Toaster />
-      <Modal/>
+      <Modal />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
@@ -23,10 +30,10 @@ const App = () => {
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='/exercise' element={auth?.user ? <Exercise /> : <Login />} />
         <Route path='/exercise/:id' element={auth?.user ? <ExerciseDetail /> : <Login />} />
-        <Route path='/plan-subscribe/:planid' element={<PlanSubscription/>} />
-        <Route path='/plan-detail/:planid' element={<PlanDetails/>} />
-        <Route path='/trainer/:trainerId' element={<TrainerDetails/>} />
-        <Route path='/feedback' element={<Feedback/>} />
+        <Route path='/plan-subscribe/:planid' element={<PlanSubscription />} />
+        <Route path='/plan-detail/:planid' element={<PlanDetails />} />
+        <Route path='/trainer/:trainerId' element={<TrainerDetails />} />
+        <Route path='/feedback' element={<Feedback />} />
 
         <Route path='*' element={<Error />} />
 
@@ -35,10 +42,11 @@ const App = () => {
           <Route path='user' element={<UserDashBoard />} />
           <Route path='user/profile' element={<Profile />} />
           <Route path='user/plan-detail' element={<PlanDetail />} />
-          <Route path='user/plan-detail-full/:planid' element={<PlanFullDetail/>} />
-          <Route path='user/favourite-exercises' element={<FavouriteExercises/>} />
-          <Route path='user/feedbacks' element={<Feedbacks/>} />
-
+          <Route path='user/plan-detail-full/:planid' element={<PlanFullDetail />} />
+          <Route path='user/favourite-exercises' element={<FavouriteExercises />} />
+          <Route path='user/feedbacks' element={<Feedbacks />} />
+          <Route path='user/trainer-workouts' element={<UserTrainerWorkouts />} />
+          <Route path='user/received-feedbacks' element={<UserReceivedFeedbacks />} />
         </Route>
 
 
@@ -59,6 +67,15 @@ const App = () => {
           <Route path='admin/equipment' element={<Equipment />} />
         </Route>
 
+        {/* trainer routes =========================== */}
+        <Route path="/dashboard" element={<TrainerRoute />}>
+          <Route path="trainer" element={<TrainerDashBoard />} />
+          <Route path='trainer/profile' element={<Profile />} />
+          <Route path='trainer/clients' element={<TrainerClients />} />
+          <Route path='trainer/workouts' element={<ManageWorkouts />} />
+          <Route path='trainer/feedbacks' element={<Feedbacks />} />
+          <Route path='trainer/received-feedbacks' element={<TrainerReceivedFeedbacks />} />
+        </Route>
       </Routes>
       <Footer />
     </BrowserRouter>
