@@ -40,18 +40,18 @@ const BodyPart = ({bodyParts, setBodyPart, bodyPart, setExercises }) => {
         >
 
           {bodyParts.map((exercise, id) => (
-              <SwiperSlide key={id} 
+            <SwiperSlide key={id} 
               style={{maxWidth:"150px", height: "auto", overflow:"hidden" }}
                className='shadow-lg animate-slideright cursor-pointer hover:opacity-80 transition-all overflow-hidden'>
-            <div className='bg-white rounded-lg hover:bg-gray-200 transition text-center cursor-pointer border-t-2 border-t-rose-500 overflow-hidden' key={id} onClick={() => {setBodyPart(exercise);   window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' });
-            }} >
-            <img src={exercisePng} alt="exercise-type" className='w-full mx-auto hover:scale-150 transition'/>
-            <h2 className='text-xl border-b-2 border-b-green-500 hover:opacity-80 text-black '>{exercise}</h2>
-          </div>
+              <div className='bg-white rounded-lg hover:bg-gray-200 transition text-center cursor-pointer border-t-2 border-t-rose-500 overflow-hidden' key={id} onClick={() => {setBodyPart(exercise);   window.scrollTo({ top: 1800, left: 100, behavior: 'smooth' }); }}
+              >
+                <img src={exercisePng} alt="exercise-type" className='w-full mx-auto hover:scale-150 transition'/>
+                <h2 className='text-xl border-b-2 border-b-green-500 hover:opacity-80 text-black '>{exercise}</h2>
+              </div>
           </SwiperSlide>
           ))}
 
-          </Swiper>
+        </Swiper>
       </div>
 
     </section>

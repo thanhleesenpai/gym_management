@@ -204,8 +204,6 @@ const updateProfileController = async (req, res) => {
 };
 
 
-
-
 const testController = (req, res) => {
     res.status(200).json({
         message: "routes is required",
@@ -290,7 +288,6 @@ const getAllFeedbacksByUser = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 };
-
 
 
 export { registerController, loginController, forgotPasswordController, testController, updateProfileController, userCountController, getAllUsersController, getSubscriptionByUser, getAllSubscriptionByUser, getAllFeedbacksByUser };
