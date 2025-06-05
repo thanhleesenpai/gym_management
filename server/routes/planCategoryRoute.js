@@ -1,6 +1,6 @@
 import express from "express";
-import {isAdmin, requireSignIn} from "../Middlewares/authMiddleware.js"
-import {createplanController, updateplanController, deleteplanController, getAllPlanController, getPlanController, planCountController} from "../controlllers/PlanCategoryController.js"
+import { isAdmin, requireSignIn } from "../Middlewares/authMiddleware.js"
+import { createplanController, updateplanController, deleteplanController, getAllPlanController, getPlanController, planCountController } from "../controllers/PlanCategoryController.js"
 const router = express.Router();
 
 // plan - choose

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const planSchema = new mongoose.Schema({
 
     userName: {
@@ -70,6 +71,7 @@ const planSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
 
 
 }, { timestamps: true });

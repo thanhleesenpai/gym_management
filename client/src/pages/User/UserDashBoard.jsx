@@ -85,7 +85,7 @@
 //           </Link>
 
 
-         
+
 //         </div>
 //       </div>
 //     </section>
@@ -178,7 +178,7 @@
 // //   const [planType, setPlanType] = useState("");
 
 // //   const getUserSubscription = async () => {
-  
+
 // //     try {
 // //       const res = await axios.get("http://localhost:5000/api/v1/auth/get-user-plan");
 // //       if (res.data && res.data.success) {
@@ -191,9 +191,9 @@
 // //       console.log(err);
 // //       toast.error("something went wong in getting subscription");
 // //     }
-  
 
- 
+
+
 // //   }
 
 // //   useEffect(() => {
@@ -244,37 +244,54 @@ const UserDashBoard = () => {
       <Heading name="User Dashboard" />
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
-          <Link 
-            className='p-5 border border-white hover:bg-blue-600 transition-all' 
+          <Link
+            className='p-5 border border-white hover:bg-blue-600 transition-all'
             to={`/dashboard/user/plan-detail`}
             data-aos="fade-up"
           >
             <h2 className='text-white font-bold text-3xl'>Plan Detail</h2>
           </Link>
-          
-          <Link 
-            className='p-5 border border-white hover:bg-blue-600 transition-all' 
+
+          <Link
+            className='p-5 border border-white hover:bg-blue-600 transition-all'
             to={`/dashboard/user/favourite-exercises`}
             data-aos="fade-up"
           >
             <h2 className='text-white font-bold text-3xl'>Favourite Exercises</h2>
           </Link>
-          
-          <Link 
-            className='p-5 border border-white hover:bg-blue-600 transition-all' 
+
+          <Link
+            className='p-5 border border-white hover:bg-blue-600 transition-all'
             to={`/dashboard/user/profile`}
             data-aos="fade-up"
           >
             <h2 className='text-white font-bold text-3xl'>Profile</h2>
           </Link>
 
-          <Link 
-            className='p-5 border border-white hover:bg-blue-600 transition-all' 
+          <Link
+            className='p-5 border border-white hover:bg-blue-600 transition-all'
             to="/dashboard/user/feedbacks"
             data-aos="fade-up"
           >
             <h2 className='text-white font-bold text-3xl'>Feedbacks</h2>
           </Link>
+
+          <Link
+            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            to="/dashboard/user/trainer-workouts"
+            data-aos="fade-up"
+          >
+            <h2 className='text-white font-bold text-3xl'>Trainer Workouts</h2>
+          </Link>
+
+          <Link
+            className='p-5 border border-white hover:bg-green-600 transition-all'
+            to="/dashboard/user/received-feedbacks"
+            data-aos="fade-up"
+          >
+            <h2 className='text-white font-bold text-2xl'>Received Feedbacks</h2>
+          </Link>
+
         </div>
       </div>
     </section>

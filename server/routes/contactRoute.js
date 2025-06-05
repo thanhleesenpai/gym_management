@@ -1,6 +1,6 @@
 import express from "express";
 // import {isAdmin, requireSignIn} from "../Middlewares/authMiddleware.js"
-import {createContactController, contactCountController, getAllContactController} from "../controlllers/contactController.js"
+import { createContactController, contactCountController, getAllContactController } from "../controllers/contactController.js"
 const router = express.Router();
 
 // plan - choose
