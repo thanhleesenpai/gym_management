@@ -94,7 +94,7 @@ const FeedbackList = () => {
               userImg={userImg}
               rating={f.rating}
               comment={f.message}
-              name={f.user.name}
+              name={f.user?.name}
               date={f.date}
               i={i}
               key={i}

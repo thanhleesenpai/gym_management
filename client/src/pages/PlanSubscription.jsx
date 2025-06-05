@@ -204,7 +204,7 @@ const PlanSelection = () => {
           </select>
 
           <div className="w-full max-w-[750px] px-7 py-3 rounded-md border-none outline-none bg-gray-200 text-gray-800 font-medium">
-            Plan Amount: {planAmount} ₹
+            Plan Amount: {planAmount} $
           </div>
 
           <select

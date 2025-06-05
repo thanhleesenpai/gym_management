@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Heading, Subscription, Loader } from '../../components';
@@ -12,7 +10,8 @@ const SubscriberList = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [subId, setSubId] = useState(null); // Initialize subId as null
-console.log(subscriber);
+  console.log(subscriber);
+
   const getAllSubscribers = async () => {
     try {
       setLoading(true);
@@ -35,7 +34,7 @@ console.log(subscriber);
     try {
       let answer = window.prompt("Are you sure you want to delete subscriber?");
       if (!answer) return;
-         const { data } = await axios.delete(`${BASE_URL}/api/v1/subscription/delete-subscription/${id}`);
+      const { data } = await axios.delete(`${BASE_URL}/api/v1/subscription/delete-subscription/${id}`);
       if (data?.success) {
         console.log(data);
         navigate("/dashboard/admin");
@@ -47,9 +46,8 @@ console.log(subscriber);
     }
   };
 
-
-  if(loading){
-    return <Loader/>
+  if (loading) {
+    return <Loader />;
   }
 
   return (
@@ -62,7 +60,7 @@ console.log(subscriber);
               key={i}
               userImg={userImg}
               userName={s.userName}
-              planName={s.plan.planName} 
+              planName={s.plan?.planName || "No Plan"} // Fix: Handle null or undefined plan
               planAmount={s.planAmount}
               planType={s.planType}
               createdAt={s.createdAt} 

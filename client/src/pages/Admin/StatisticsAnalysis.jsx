@@ -99,7 +99,7 @@ const StatisticsAnalysis = () => {
           </div>
           <div className="p-5 border border-white hover:bg-blue-600 transition-all">
             <h2 className="text-white font-bold text-2xl">Total Revenue</h2>
-            <p className="text-white text-lg">{totalRevenue} ₹</p>
+            <p className="text-white text-lg">{totalRevenue} $</p>
           </div>
           <div className="p-5 border border-white hover:bg-blue-600 transition-all">
             <h2 className="text-white font-bold text-2xl">Plan Type Counts</h2>
@@ -108,10 +108,6 @@ const StatisticsAnalysis = () => {
                 <li key={type}>{type}: {count}</li>
               ))}
             </ul>
-          </div>
-          <div className="p-5 border border-white hover:bg-blue-600 transition-all">
-            <h2 className="text-white font-bold text-2xl">Total Feedbacks</h2>
-            <p className="text-white text-lg">{totalFeedbacks}</p>
           </div>
           <div className="p-5 border border-white hover:bg-blue-600 transition-all">
             <h2 className="text-white font-bold text-2xl">Average Rating</h2>
@@ -140,7 +136,7 @@ const StatisticsAnalysis = () => {
             .map(([key, value]) => (
               <div key={key} className="mb-10">
                 <h2 className='text-white font-bold text-2xl mb-4'>Month: {key}</h2>
-                <h3 className='text-white font-medium text-xl mb-4'>Income: {value.toFixed(2)} ₹</h3>
+                <h3 className='text-white font-medium text-xl mb-4'>Income: {value.toFixed(2)} $</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                   {subscribersByMonth
                     .filter(sub => sub.month === key)
