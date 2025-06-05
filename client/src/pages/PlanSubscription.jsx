@@ -18,6 +18,7 @@ const PlanSelection = () => {
   const [yearlyPlanAmount, setYearlyPlanAmount] = useState("");
   const [planType, setPlanType] = useState("");
   const [planId, setPlanId] = useState(planid);
+  const [paymentMethod, setPaymentMethod] = useState(""); // New state for payment method
   const [loading, setLoading] = useState(false);
   const [personalTrainer, setPersonalTrainer] = useState(""); // Add this line
 
@@ -111,12 +112,12 @@ const PlanSelection = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(userName, planName, planAmount, planType, planId);
+    console.log(userName, planName, planAmount, planType, planId, paymentMethod);
 
     try {
       // Create subscription
       const res = await axios.post(`${BASE_URL}/api/v1/subscription/create-subscription`, {
-        userName, planType, planAmount, planId
+        userName, planType, planAmount, planId, paymentMethod
       });
 
       if (res.data && res.data.success) {
@@ -199,32 +200,24 @@ const PlanSelection = () => {
             <option value="9 Month">9 Month</option>
             <option value="10 Month">10 Month</option>
             <option value="11 Month">11 Month</option>
-            {/* <option value="12 Month">12 Month</option> */}
-
             <option value="1 Year">1 Year</option>
           </select>
-          {/* </div> */}
 
-          <label className="text-white text-sm font-bold text-left w-3/5">Plan Amount</label>
-          <Input
-            type="text"
-            placeholder="Plan Amount"
-            name="planamount"
-            value={planAmount}
-            onChange={(e) => setPlanAmount(e.target.value)}
-            // pattern="[0-9]+"
-            disabled // Disable user input for plan amount
-          />
+          <div className="w-full max-w-[750px] px-7 py-3 rounded-md border-none outline-none bg-gray-200 text-gray-800 font-medium">
+            Plan Amount: {planAmount} ₹
+          </div>
 
-          {/* <Input
-            type="text"
-            placeholder="Plan Id"
-            name="planid"
-            value={planId}
-            onChange={(e) => setPlanId(e.target.value)}
-            // pattern="[0-9]+"
-            disabled // Disable user input for plan amount
-          /> */}
+          <select
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+            className="w-full max-w-[750px] px-7 py-3 rounded-md border-none outline-none bg-white placeholder:text-gray-600 placeholder:font-bold font-medium"
+          >
+            <option value="">Select Payment Method</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="UPI">UPI</option>
+            <option value="Net Banking">Net Banking</option>
+          </select>
 
           <button type='submit' className='btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]'>Submit</button>
         </form>

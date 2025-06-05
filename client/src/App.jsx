@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header, Footer, ScrollButton, PrivateRoute, AdminRoute, Modal } from "./components";
+import { Register, Login, ForgotPassword, Home, PlanSubscription, Error, Exercise, ExerciseDetail, Profile, UserDashBoard, PlanDetail, AdminDashBoard, CreatePlan, UpdatePlan, Plans, SubscriberList, UserList, FavouriteExercises, PlanDetails, PlanFullDetail, ContactUs, TrainerDetails, Feedback, Feedbacks, FeedbackList, StatisticsAnalysis, GymRoom, Equipment} from "./pages";
 import TrainerRoute from "./components/trainer/TrainerRoute";
-import { Register, Login, ForgotPassword, Home, PlanSubscription, Error, Exercise, ExerciseDetail, Profile, UserDashBoard, PlanDetail, AdminDashBoard, CreatePlan, UpdatePlan, Plans, SubscriberList, UserList, FavouriteExercises, PlanDetails, PlanFullDetail, ContactUs, TrainerDetails, Feedback, Feedbacks, FeedbackList } from "./pages";
 import TrainerDashBoard from "./pages/Trainer/TrainerDashBoard";
 import TrainerClients from "./pages/Trainer/TrainerClients";
 import ManageWorkouts from "./pages/Trainer/ManageWorkouts";
@@ -62,6 +62,9 @@ const App = () => {
           <Route path='admin/contact-us' element={<ContactUs />} />
           <Route path='admin/subscriber-list' element={<SubscriberList />} />
           <Route path='admin/feedbacks' element={<FeedbackList />} />
+          <Route path='admin/statistics-analysis' element={<StatisticsAnalysis />} />
+          <Route path='admin/gym-room' element={<GymRoom />} />
+          <Route path='admin/equipment' element={<Equipment />} />
         </Route>
 
         {/* trainer routes =========================== */}
