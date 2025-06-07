@@ -79,7 +79,7 @@ const Equipment = () => {
   }
 
   return (
-    <section className="pt-10 bg-gray-900">
+    <section className="pt-10 bg-blue-300">
       <Heading name="Equipment Management" />
       <div className="container mx-auto px-6 py-10">
         <form className="mb-10" onSubmit={handleAddEquipment}>

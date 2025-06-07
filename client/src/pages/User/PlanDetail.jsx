@@ -134,7 +134,7 @@ const PlanDetail = () => {
   }
 
   return (
-    <section className='pt-10 bg-gray-900'>
+    <section className='pt-10 bg-white'>
       <Heading name="Current User Plan" />
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">

@@ -28,7 +28,7 @@ const FavouriteExercises = () => {
 
 
   return (
-    <section className='py-20 bg-gray-900'>
+    <section className='py-20 bg-blue-300'>
       <h2 className='text-3xl md:text-4xl text-white font-medium text-center'>You Have {cart.length} <span className='text-red-500'>Favourite</span>  Exercise</h2>
       <div className="container mx-auto px-2 py-28">
 

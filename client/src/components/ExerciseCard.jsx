@@ -10,7 +10,7 @@ const ExerciseCard = ({exercises, heading}) => {
   if (!Array.isArray(exercises)) {
     console.error("Invalid data format: exercises is not an array", exercises);
     return (
-      <h1 className='text-4xl flex justify-center items-center w-full h-screen text-center'>
+      <h1 className='text-4xl flex justify-center items-center w-full h-screen text-center text-white'>
         Failed to load exercises. Please try again later.
       </h1>
     );
@@ -18,7 +18,7 @@ const ExerciseCard = ({exercises, heading}) => {
 
   if(exercises.length === 0){
     return (
-      <h1 className='text-4xl flex justify-center items-center w-full h-screen text-center'>No Exercises Found.....</h1>
+      <h1 className='text-4xl flex justify-center items-center w-full h-screen text-center text-white'>No Exercises Found.....</h1>
     )
   }
 

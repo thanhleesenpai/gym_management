@@ -91,7 +91,7 @@ const Profile = () => {
 
 
   return (
-    <section className='bg-gray-900'>
+    <section className='bg-blue-300'>
 
       <div className='container mx-auto px-6'>
         <form className='flex w-full h-screen justify-center items-center flex-col gap-5' onSubmit={updateUser}>
@@ -137,7 +137,7 @@ const Profile = () => {
 
           />
 
-          <button type='submit' className='btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]' >Update</button>
+          <button type='submit' className='bg-blue-600 btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]' >Update</button>
         </form>
       </div>
     </section>

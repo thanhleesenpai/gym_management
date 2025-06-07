@@ -240,12 +240,17 @@ const UserDashBoard = () => {
   }, []);
 
   return (
-    <section className='pt-10 bg-gray-900'>
-      <Heading name="User Dashboard" />
-      <div className="container mx-auto px-6 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
+    <section className='pt-10 bg-white'>
+      <div className="flex justify-center mt-4">
+        <div className="text-blue-600 text-5xl font-semibold border-b-4 border-blue-600 pb-2">
+            User DashBoard
+       </div>
+      </div>
+
+      <div className="container mx-auto px-6 py-20 ">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch ">
           <Link
-            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to={`/dashboard/user/plan-detail`}
             data-aos="fade-up"
           >
@@ -253,7 +258,7 @@ const UserDashBoard = () => {
           </Link>
 
           <Link
-            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to={`/dashboard/user/favourite-exercises`}
             data-aos="fade-up"
           >
@@ -261,7 +266,7 @@ const UserDashBoard = () => {
           </Link>
 
           <Link
-            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to={`/dashboard/user/profile`}
             data-aos="fade-up"
           >
@@ -269,7 +274,7 @@ const UserDashBoard = () => {
           </Link>
 
           <Link
-            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to="/dashboard/user/feedbacks"
             data-aos="fade-up"
           >
@@ -277,7 +282,7 @@ const UserDashBoard = () => {
           </Link>
 
           <Link
-            className='p-5 border border-white hover:bg-blue-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to="/dashboard/user/trainer-workouts"
             data-aos="fade-up"
           >
@@ -285,7 +290,7 @@ const UserDashBoard = () => {
           </Link>
 
           <Link
-            className='p-5 border border-white hover:bg-green-600 transition-all'
+            className='p-5 border border-white hover:bg-green-600 transition-all bg-blue-600'
             to="/dashboard/user/received-feedbacks"
             data-aos="fade-up"
           >

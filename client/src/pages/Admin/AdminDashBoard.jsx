@@ -160,32 +160,36 @@ const AdminDashBoard = () => {
   }
 
   return (
-    <section className='pt-10 bg-gray-900'>
-      <Heading name="Admin Dashboard" />
+    <section className='pt-10 bg-white'>
+      <div className="flex justify-center mt-4">
+        <div className="text-blue-600 text-5xl font-semibold border-b-4 border-blue-600 pb-2">
+            Admin DashBoard
+       </div>
+      </div>
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/user-list`} data-aos="fade-up">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/user-list`} data-aos="fade-up">
             <h2 className='text-white font-bold text-3xl'>Users: {userCount !== null ? userCount : "Loading..."}</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/subscriber-list`} data-aos="fade-up" data-aos-delay="100">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/subscriber-list`} data-aos="fade-up" data-aos-delay="100">
             <h2 className='text-white font-bold text-3xl'>Subscribers: {subscriberCount !== null ? subscriberCount : "Loading..."}</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/plans`} data-aos="fade-up" data-aos-delay="200">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/plans`} data-aos="fade-up" data-aos-delay="200">
             <h2 className='text-white font-bold text-3xl'>Plans: {planCount !== null ? planCount : "Loading..."}</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/contact-us`} data-aos="fade-up" data-aos-delay="300">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/contact-us`} data-aos="fade-up" data-aos-delay="300">
             <h2 className='text-white font-bold text-3xl'>Queries: {contactCount !== null ? contactCount : "Loading..."}</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/feedbacks`} data-aos="fade-up" data-aos-delay="400">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/feedbacks`} data-aos="fade-up" data-aos-delay="400">
             <h2 className='text-white font-bold text-3xl'>Feedbacks</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/gym-room`} data-aos="fade-up" data-aos-delay="400">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/gym-room`} data-aos="fade-up" data-aos-delay="400">
             <h2 className='text-white font-bold text-3xl'>Gym Rooms</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/equipment`} data-aos="fade-up" data-aos-delay="500">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/equipment`} data-aos="fade-up" data-aos-delay="500">
             <h2 className='text-white font-bold text-3xl'>Equipment</h2>
           </Link>
-          <Link className='p-5 border border-white hover:bg-blue-600 transition-all' to={`/dashboard/admin/statistics-analysis`} data-aos="fade-up" data-aos-delay="600">
+          <Link className='p-5 border border-white bg-blue-600 hover:bg-green-600 transition-all' to={`/dashboard/admin/statistics-analysis`} data-aos="fade-up" data-aos-delay="600">
             <h2 className='text-white font-bold text-3xl'>Statistics Analysis</h2>
           </Link>
         </div>

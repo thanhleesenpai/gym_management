@@ -38,7 +38,7 @@ const UserTrainerWorkouts = () => {
     if (loading) return <Loader />;
 
     return (
-        <section className='pt-10 bg-gray-900 min-h-screen'>
+        <section className='pt-10 bg-blue-300 min-h-screen'>
             <Heading name="My Trainer Workouts" />
             <div className="container mx-auto px-6 py-10">
                 {Object.keys(workouts).length === 0 ? (

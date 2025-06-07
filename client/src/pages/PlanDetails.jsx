@@ -79,7 +79,7 @@ const PlanDetails = () => {
   }
 
   return (
-    <section className='py-20 flex flex-col justify-center items-center bg-gray-900'>
+    <section className='py-20 flex flex-col justify-center items-center bg-blue-300'>
       <h2 className='text-white text-3xl sm:text-4xl font-bold text-center mb-6' data-aos="fade-up">
         What You Will Get In This Pack?
       </h2>

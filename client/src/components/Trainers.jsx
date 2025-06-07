@@ -66,7 +66,7 @@ const Trainers = () => {
           )}
         </div>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-800 to-green-300 opacity-80 pointer-events-none z-[-1]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-600 to-green-300 opacity-80 pointer-events-none z-[-1]"></div>
     </section>
   );
 };
