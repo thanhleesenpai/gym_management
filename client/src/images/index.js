@@ -12,6 +12,7 @@ import trainerImg3 from "./trainer3.png";
 import trainerImg4 from "./trainer4.png";
 
 
+
 import sponsorImg1 from "./sponsor1.png";
 import sponsorImg2 from "./sponsor2.png";
 import sponsorImg3 from "./sponsor3.png";
@@ -32,4 +33,4 @@ import userImg from "./user.png";
 import planImg from "./plan_img.png";
 
 
-export {heroImg, aboutImg, planImg1, planImg2, planImg3, planImg4, trainerImg1, trainerImg2, trainerImg3, trainerImg4, error, sponsorImg1, sponsorImg2, sponsorImg3, sponsorImg4, exercisePng, review1, review2, review3, review4, userImg, planImg};
+export {heroImg, aboutImg, planImg1, planImg2, planImg3, planImg4,  trainerImg1, trainerImg2, trainerImg3, trainerImg4, error, sponsorImg1, sponsorImg2, sponsorImg3, sponsorImg4, exercisePng, review1, review2, review3, review4, userImg, planImg};

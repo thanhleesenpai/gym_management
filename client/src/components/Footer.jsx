@@ -7,31 +7,54 @@ import { sponsorImg1, sponsorImg2, sponsorImg3, sponsorImg4 } from "../images";
 
 const Footer = () => {
   return (
-    <footer className='bg-gray-900 pt-20 pb-10 text-white'>
+    <footer className='bg-red-500 pt-20 pb-10 text-white'>
       <div className="container mx-auto px-6">
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16'>
           {/* Explore More Section */}
-          <div className='flex flex-col gap-4'>
-            <h2 className='text-2xl font-semibold'>Explore More</h2>
-            <p className='text-gray-300 font-medium text-base'>
-              Discover the best in fitness, wellness, and lifestyle content. Stay updated with the latest trends, offers, and more.
-            </p>
+          {/* Explore More Section */}
+          <div className="flex flex-col gap-6 mt-0">
+            <h2 className="text-2xl font-bold mb-2">Contact Information</h2>
+
+            {/* Địa chỉ 1 */}
+            <div className="flex items-center gap-3">
+              <img 
+                alt="Location" 
+                src="https://static.vecteezy.com/system/resources/previews/000/599/083/original/location-icon-vector.jpg" 
+                width={30} 
+                height={30} 
+              />
+              <p className='text-lg'>Số 1 Giải Phóng</p>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-center gap-3">
+              <img 
+                alt="Email" 
+                src="https://tse2.mm.bing.net/th?id=OIP.LJToC8Q5-Kwm7tMwY5GAgwHaHa&pid=Api&P=0&h=180" 
+                width={30} 
+                height={30} 
+              />
+              <p className='text-lg'>caongo2004@gmail.com</p>
+            </div>
+
+            {/* Số điện thoại 1 */}
+            <div className="flex items-center gap-3">
+              <img 
+                alt="Phone" 
+                src="https://bluegym.vn/wp-content/plugins/button-contact-vr/img/phone.png" 
+                width={30} 
+                height={30} 
+              />
+              <p className='text-lg'>0909 090 909</p>
+            </div>
+
+           
+            
           </div>
 
-          {/* Newsletter Subscription */}
-          <div className='flex flex-col gap-4'>
-            <h2 className='text-2xl font-semibold'>Subscribe To Our Newsletter</h2>
-            <input 
-              type="email" 
-              placeholder='Your email address' 
-              className='px-4 py-3 text-gray-900 font-medium border-none outline-none rounded-md placeholder:text-gray-600 transition-all focus:ring-2 focus:ring-indigo-600' 
-            />
-            <button 
-              type='submit' 
-              className='px-6 py-3 bg-indigo-600 text-white font-semibold rounded-md transition-all ease-in-out hover:bg-indigo-700 hover:scale-105'>
-              Submit
-            </button>
-          </div>
+
+
+          
 
           {/* Social Media Links */}
           <div className='flex flex-col gap-4'>

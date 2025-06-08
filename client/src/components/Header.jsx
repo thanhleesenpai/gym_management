@@ -23,11 +23,16 @@ const Header = () => {
 
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo (Stylized Text) */}
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-3xl sm:text-4xl font-extrabold text-white tracking-widest">
-             Gym<span className="text-white">Blue</span>
-          </span>
+        
+        <Link to="/" className="flex items-center">
+          <img
+            src="https://bluegym.vn/wp-content/uploads/2023/09/logo-8.png"
+            alt="GymBlue Logo"
+            className="h-8 sm:h-10 object-contain ml-1"
+          />
         </Link>
+        
+
 
         {/* Hamburger Menu for Mobile */}
         <button

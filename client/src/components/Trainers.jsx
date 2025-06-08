@@ -54,7 +54,7 @@ const Trainers = () => {
             trainers.map((trainer, idx) => (
               <div key={trainer._id} data-aos="fade-up" data-aos-delay={idx * 200}>
                 <Trainer
-                  img={trainer.imgUrl}
+                  img={ trainer.imgUrl}
                   alt={`trainer-${trainer.name}`}
                   id={trainer._id}
                   name={trainer.name}
