@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { planImg1 } from "../../images";
+import { planImg10 } from "../../images";
 
 const Plan = ({ planName, monthlyPlanAmount, yearlyPlanAmount, p_id }) => {
   return (
@@ -11,7 +11,7 @@ const Plan = ({ planName, monthlyPlanAmount, yearlyPlanAmount, p_id }) => {
           {planName}
         </h3>
         <img
-          src={planImg1}
+          src={planImg10}
           alt="Plan Image"
           className='w-full rounded-lg object-cover h-[200px] group-hover:scale-110 transition-transform duration-300'
         />

@@ -28,7 +28,7 @@ const Header = () => {
           <img
             src="https://bluegym.vn/wp-content/uploads/2023/09/logo-8.png"
             alt="GymBlue Logo"
-            className="h-8 sm:h-10 object-contain ml-1"
+            className="h-15 w-15 sm:h-8 object-contain ml-1"
           />
         </Link>
         

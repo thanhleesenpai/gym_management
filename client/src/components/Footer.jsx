@@ -7,7 +7,7 @@ import { sponsorImg1, sponsorImg2, sponsorImg3, sponsorImg4 } from "../images";
 
 const Footer = () => {
   return (
-    <footer className='bg-red-500 pt-20 pb-10 text-white'>
+    <footer className='bg-green-500 pt-20 pb-10 text-white'>
       <div className="container mx-auto px-6">
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16'>
           {/* Explore More Section */}
