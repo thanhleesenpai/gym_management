@@ -1,4 +1,4 @@
-import heroImg from "./hero.png";
+import heroImg from "./gym.jpg";
 import aboutImg from "./explore.png";
 
 import planImg1 from "./about.png";
