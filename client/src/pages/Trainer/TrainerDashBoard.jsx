@@ -10,12 +10,16 @@ const TrainerDashBoard = () => {
     }, []);
 
     return (
-        <section className='pt-10 bg-gray-900'>
-            <Heading name="Trainer Dashboard" />
+        <section className='pt-10 bg-white'>
+            <div className="flex justify-center mt-4">
+        <div className="text-blue-600 text-5xl font-semibold border-b-4 border-blue-600 pb-2">
+            Trainer DashBoard
+       </div>
+      </div>
             <div className="container mx-auto px-6 py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
                     <Link
-                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        className='bg-blue-600 p-5 border border-white hover:bg-green-600 transition-all'
                         to="/dashboard/trainer/clients"
                         data-aos="fade-up"
                     >
@@ -23,7 +27,7 @@ const TrainerDashBoard = () => {
                     </Link>
 
                     <Link
-                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        className='bg-blue-600 p-5 border border-white hover:bg-green-600 transition-all'
                         to="/dashboard/trainer/workouts"
                         data-aos="fade-up"
                     >
@@ -31,7 +35,7 @@ const TrainerDashBoard = () => {
                     </Link>
 
                     <Link
-                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        className='bg-blue-600 p-5 border border-white hover:bg-green-600 transition-all'
                         to="/dashboard/trainer/profile"
                         data-aos="fade-up"
                     >
@@ -39,7 +43,7 @@ const TrainerDashBoard = () => {
                     </Link>
 
                     <Link
-                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        className='bg-blue-600 p-5 border border-white hover:bg-green-600 transition-all'
                         to="/dashboard/trainer/feedbacks"
                         data-aos="fade-up"
                     >
@@ -47,7 +51,7 @@ const TrainerDashBoard = () => {
                     </Link>
 
                     <Link
-                        className='p-5 border border-white hover:bg-green-600 transition-all'
+                        className='bg-blue-600 p-5 border border-white hover:bg-green-600 transition-all'
                         to="/dashboard/trainer/received-feedbacks"
                         data-aos="fade-up"
                     >

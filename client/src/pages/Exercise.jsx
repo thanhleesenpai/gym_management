@@ -13,7 +13,7 @@ const Exercise = () => {
   }, []);
 
   return (
-    <section className='bg-gray-900'>
+    <section className='bg-blue-300'>
 
 
       <SearchInput

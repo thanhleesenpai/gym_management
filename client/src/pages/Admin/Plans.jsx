@@ -40,7 +40,7 @@ console.log(plans);
   }
 
 return (
-  <section className='bg-gray-900 pt-10'>
+  <section className='bg-blue-300 pt-10'>
       <Heading name="Plans List"/>
     <div className="container mx-auto px-6 py-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-center">

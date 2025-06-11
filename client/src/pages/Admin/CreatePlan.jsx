@@ -83,7 +83,7 @@ const CreatePlan = () => {
   }
 
   return (
-    <section className='py-60 bg-gray-900'>
+    <section className='py-60 bg-blue-300'>
       <div className='container mx-auto px-6'>
         <form className='flex w-full h-screen justify-center items-center flex-col gap-5' onSubmit={onSubmit}>
           <h2 className='text-center text-4xl text-white font-bold mt-16'>Create Plan</h2>
@@ -286,7 +286,7 @@ const CreatePlan = () => {
           </div>
 
 
-          <button type='submit' className='btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]'>Submit</button>
+          <button type='submit' className='bg-blue-600 btn px-5 py-2 font-normal outline-none border border-white rounded-sm text-xl text-white hover:text-black hover:bg-white transition-all ease-in w-full max-w-[750px]'>Submit</button>
         </form>
       </div>
 

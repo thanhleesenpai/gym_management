@@ -124,7 +124,7 @@ const ManageWorkouts = () => {
     if (loading) return <Loader />;
 
     return (
-        <section className='pt-10 bg-gray-900 min-h-screen'>
+        <section className='pt-10 bg-blue-300 min-h-screen'>
             <Heading name="Manage Workouts" />
             <div className="container mx-auto px-6 py-10">
                 {/* Client Selection */}

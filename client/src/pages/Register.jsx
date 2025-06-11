@@ -81,7 +81,7 @@ const Register = () => {
   }, []);
 
   return (
-    <div className='bg-gray-900'>
+    <div className='bg-blue-300'>
       <div className='container mx-auto px-6'>
         <form
           className='flex w-full h-screen justify-center items-center flex-col gap-5'

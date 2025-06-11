@@ -99,7 +99,7 @@ const Feedback = () => {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-900">
+    <div className="flex justify-center items-center h-screen bg-blue-300">
       <form className="bg-white p-8 rounded-lg shadow-md w-full max-w-md" onSubmit={handleSubmit}>
         <h2 className="text-2xl font-bold mb-4 text-center">Submit Feedback</h2>
         {error && (

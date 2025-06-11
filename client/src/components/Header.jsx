@@ -19,14 +19,20 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-indigo-600 shadow-md py-4 sticky top-0 z-50">
+    <header className="bg-blue-600 shadow-md py-4 sticky top-0 z-50">
+
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo (Stylized Text) */}
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-3xl sm:text-4xl font-extrabold text-yellow-400 tracking-widest">
-            Gym<span className="text-white">Master</span>
-          </span>
+        
+        <Link to="/" className="flex items-center">
+          <img
+            src="https://bluegym.vn/wp-content/uploads/2023/09/logo-8.png"
+            alt="GymBlue Logo"
+            className="h-15 w-15 sm:h-8 object-contain ml-1"
+          />
         </Link>
+        
+
 
         {/* Hamburger Menu for Mobile */}
         <button

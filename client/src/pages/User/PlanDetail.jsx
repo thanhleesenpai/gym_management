@@ -126,7 +126,7 @@ const PlanDetail = () => {
 
 
   if (allUserSubscription.length === 0) {
-    return <h1 className=' text-3xl sm:text-5xl text-black flex justify-center items-center h-screen'>No Plan Choosen</h1>
+    return <h1 className=' bg-blue-300 text-3xl sm:text-5xl text-white flex justify-center items-center h-screen'>No Plan Choosen</h1>
   }
 
   if (loading) {
@@ -134,7 +134,7 @@ const PlanDetail = () => {
   }
 
   return (
-    <section className='pt-10 bg-gray-900'>
+    <section className='pt-10 bg-white'>
       <Heading name="Current User Plan" />
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">

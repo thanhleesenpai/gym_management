@@ -115,9 +115,9 @@ const Feedbacks = () => {
 
 
   return (
-    <section className='bg-gray-900'>
+    <section className='bg-blue-300'>
 
-      <div className="max-w-4xl mx-auto py-8 px-4">
+      <div className="max-w-4xl mx-auto py-8 px-4 ">
         {/* <h2 className="text-3xl font-bold mb-4 text-white">Your Feedback</h2> */}
         <Heading name="Your Feedback" />
         {error && <div className="mb-4 text-red-500">{error}</div>}
@@ -188,7 +188,7 @@ const Feedbacks = () => {
                       </button>
                       <button
                         onClick={() => handleDeleteFeedback(feedback._id)}
-                        className="bg-red-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-200"
+                        className="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-red-700 transition duration-200"
                       >
                         Delete
                       </button>

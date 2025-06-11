@@ -40,7 +40,7 @@ const UserReceivedFeedbacks = () => {
     }
 
     return (
-        <section className='bg-gray-900'>
+        <section className='bg-blue-300'>
             <div className="max-w-4xl mx-auto py-8 px-4">
                 <Heading name="Feedbacks For You" />
                 {feedbacks.length === 0 ? (

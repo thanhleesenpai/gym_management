@@ -48,7 +48,7 @@ const TrainerClients = () => {
     if (loading) return <Loader />;
 
     return (
-        <section className='pt-10 bg-gray-900'>
+        <section className='pt-10 bg-blue-300'>
             <Heading name="My Clients" />
             <div className="container mx-auto px-6 py-10">
                 {clients.length === 0 ? (
