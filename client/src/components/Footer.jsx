@@ -7,9 +7,9 @@ import { sponsorImg1, sponsorImg2, sponsorImg3, sponsorImg4 } from "../images";
 
 const Footer = () => {
   return (
-    <footer className='bg-green-500 pt-20 pb-10 text-white'>
+    <footer className='bg-blue-600 pt-20 pb-10 text-white'>
       <div className="container mx-auto px-6">
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16'>
           {/* Explore More Section */}
           {/* Explore More Section */}
           <div className="flex flex-col gap-6 mt-0">
@@ -79,7 +79,7 @@ const Footer = () => {
           </div>
 
           {/* Sponsor Logos */}
-          <div className='flex flex-col gap-4'>
+          {/* <div className='flex flex-col gap-4'>
             <h2 className='text-2xl font-semibold'>Our Sponsors</h2>
             <div className='flex flex-wrap gap-4'>
               <img src={sponsorImg1} alt="sponsor-img1" className='w-full max-w-[120px] object-contain' />
@@ -87,12 +87,12 @@ const Footer = () => {
               <img src={sponsorImg3} alt="sponsor-img3" className='w-full max-w-[120px] object-contain' />
               <img src={sponsorImg4} alt="sponsor-img4" className='w-full max-w-[120px] object-contain' />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer Bottom */}
         <div className='border-t border-gray-700 mt-10 pt-6 text-center'>
-          <p className='text-gray-400'>© 2024 Your Company. All rights reserved.</p>
+          <p className='text-gray-400'>© 2025 Blue Gym. All rights reserved.</p>
         </div>
       </div>
     </footer>

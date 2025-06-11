@@ -23,7 +23,7 @@ const FavouriteExercises = () => {
 
 
   if (cart.length === 0) {
-    return <h1 className=' text-3xl sm:text-5xl text-white flex justify-center items-center h-screen'>No Favourite Exercises</h1>
+    return <h1 className=' bg-blue-300 text-3xl sm:text-5xl text-white flex justify-center items-center h-screen'>No Favourite Exercises</h1>
   }
 
 
